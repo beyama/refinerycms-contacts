@@ -1,0 +1,139 @@
+<%= form_for [:admin, @contact] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @contact,
+          :include_object_name => true
+        } %>
+  
+	<% style  = @contact.is_company ? 'display:hidden;' : '' %>
+	
+	<div class='field is_company'>
+    <%= f.label :is_company -%>
+    <%= f.check_box :is_company -%>
+  </div>
+	
+  <div class='field'>
+    <%= company_context_label(f, :first_name) -%>
+    <%= f.text_field :first_name, :class => 'larger widest' -%>
+  </div>
+	
+	<div class='field only-natural-person' style="<%= style %>">
+    <%= f.label :last_name -%>
+    <%= f.text_field :last_name -%>
+  </div>
+  
+  <div class='field only-natural-person' style="<%= style %>">
+    <%= f.label :middle_name -%>
+    <%= f.text_field :middle_name -%>
+  </div>
+  
+  <div class='field only-natural-person' style="<%= style %>">
+    <%= f.label :company -%>
+    <%= f.text_field :company -%>
+  </div>
+	
+	<div class='field only-natural-person' style="<%= style %>">
+    <%= f.label :birthday -%>
+    <%= f.date_select :birthday, :include_blank => true -%>
+  </div>
+	
+	<div class='field' style="<%= style %>">
+    <%= company_context_label(f, :job_title) -%>
+    <%= f.text_field :job_title -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :address -%>
+    <%= f.text_area :address, :rows => 5, :cols => 40 -%>
+  </div>
+  
+	<div class='field'>
+    <%= f.label :phone -%>
+    <%= f.text_field :phone -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :email -%>
+    <%= f.text_field :email -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :website -%>
+    <%= f.text_field :website -%>
+  </div>
+	
+	<% if Contact.taggable? %>
+		<div class='field'>
+	    <%= f.label :tag_list, "Tags" -%>
+	    <%= f.text_field :tag_list, :class => 'larger' -%>
+    </div>
+	<% end %>
+	
+  <div class='field'>
+    <%= f.label :avatar -%>
+    <%= render :partial => "/shared/admin/image_picker", :locals => {
+          :f => f,
+          :field => :avatar_id,
+          :image => @contact.avatar,
+          :thumbnail => 'small',
+          :toggle_image_display => false
+        } %>
+  </div>
+  
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:background].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to part.to_s.titleize, "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div id='page_part_editors'>
+        <% [:background].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.contacts.contact'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @contact.first_name)
+              } %>
+<% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+		
+		var is_company = $('#contact_is_company'),
+		    only_natural = $('.only-natural-person'),
+				company_context = $('.company_context');
+		
+		function switch_company_context() {
+			if(is_company.attr('checked')) {
+        only_natural.hide();
+				company_context.each(function() {
+					var el = $(this);
+          el.text(el.attr('company_title'));
+				});
+      } else {
+        only_natural.show();
+				company_context.each(function() {
+          var el = $(this);
+          el.text(el.attr('natural_title'));
+        });
+      }
+		}
+		is_company.click(switch_company_context);
+		
+		switch_company_context();		
+  </script>
+<% end %>

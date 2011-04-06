@@ -1,0 +1,20 @@
+<% content_for :stylesheets, stylesheet_link_tag('refinerycms-contacts') %>
+
+<% content_for :body_content_left do %>
+  <%=raw @page[Page.default_parts.first.to_sym] if Page.default_parts.any? %>
+
+  <% if @contacts.any? %>
+    <section id="contacts">
+      <%= render :partial => "/contacts/contact", :collection => @contacts, :locals => { :show_link => true } %>
+      <%= will_paginate @contacts if paginate? %>
+    </section>
+  <% else %>
+    <p><%= t('.no_contacts_yet') %></p>
+  <% end %>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <%=raw @page[Page.default_parts.second.to_sym] if Page.default_parts.many? %>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

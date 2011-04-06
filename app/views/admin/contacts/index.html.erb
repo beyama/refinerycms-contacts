@@ -1,0 +1,55 @@
+<% 
+content_for :stylesheets, stylesheet_link_tag('refinery/refinerycms-contacts') 
+content_for :javascripts, javascript_include_tag('refinery/refinerycms-contacts') 
+%>
+<div id='records'>
+  <% if searching? %>
+    <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
+  <% end %>
+  <% if @contacts.any? %>
+    <div class='pagination_container'>
+      <%= render :partial => 'contacts' %>
+    </div>
+  <% else %>
+    <p>
+      <% unless searching? %>
+        <strong>
+          <%= t('.no_items_yet') %>
+        </strong>
+      <% else %>
+        <%= t('no_results', :scope => 'shared.admin.search') %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<div id='actions'>
+  <ul>
+    <% if Admin::ContactsController.searchable? %>
+      <li>
+        <%= render :partial => "/shared/admin/search",
+                    :locals => {
+                      :url => admin_contacts_url
+                    } %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to t('.create_new'), new_admin_contact_url,
+                   :class => "add_icon" %>
+    </li>
+  </ul>
+	
+	<% if Contact.taggable? %>
+	  <div class="tag_cloud">
+		  <h2><%= t('.tags')%></h2>
+		
+			<% tag_cloud(@tags, %w(level1 level2 level3 level4)) do |tag, css_class| %>
+		    <%= link_to tag.name, admin_contacts_path(:tag => tag.name), :class => css_class %>
+		  <% end %>
+		</div>
+  <% end %>
+
+</div>
+<%= render :partial => "/shared/admin/make_sortable",
+            :locals => {
+              :tree => false
+            } if !searching? and Admin::ContactsController.sortable? and Contact.count > 1 %>

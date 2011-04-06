@@ -1,0 +1,24 @@
+<div id="<%= tagarea_dom_id(contact) %>" class="tagarea">
+  
+	<ul class="tags">
+		<% unless contact.tags.empty? %>
+		  <% contact.tags.each do |tag| %>
+			  <li class="tag"><%= link_to tag.name, admin_contacts_path(:tag => tag.name) %></li>
+			<% end %>
+		<% else %>
+		  <li class="notags"><%= t('admin.tags.notags') %></li>
+		<% end %>
+		<li class="action">
+			<% tooltip = t('admin.tags.edit') %>
+			<a class="edit" tooltip="<%= tooltip %>" href="#"><span><%= tooltip %></span></a>
+		</li>
+	</ul>
+	
+	<%= form_for [:admin, contact], :class => 'tagform', :remote => true do |f| %>
+	  <%= hidden_field_tag :_tag_update, true %>
+	  <%= f.text_field :tag_list -%>
+	  <%= f.submit :class => 'button', :value => t('admin.tags.update') %>
+    <a class="cancel" href="#"><%= t('admin.tags.cancel') %></a>
+	<% end %>
+	
+</div>

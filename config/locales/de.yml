@@ -1,0 +1,67 @@
+de:
+  shared:
+    admin:
+      image_picker:
+        image: Bild
+  plugins:
+    contacts:
+      title: Kontakte
+  admin:
+    contacts:
+      index:
+        title: Kontakte
+        create_new: Neuen Kontakt anlegen
+        sorry_no_results: Tut mir leid, Suche brachte keine Ergebnisse 
+        no_items_yet: Es sind noch keine Kontakte angelegt. Klick "Neuen Kontakt anlegen" um deinen ersten Kontakt hinzuzufügen.
+        tags: Tags
+      contact:
+        show: Öffne diesen Kontakt
+        edit: Bearbeite diesen Kontakt
+        delete: Lösche diesen Kontakt für immer
+      show:
+        name: Name
+        company: Firma
+        person: Person
+        contact: Kontakt
+        notes: Notizen
+        add_note: Notiz hinzufügen
+        background: Hintergrund
+        edit: Bearbeite diesen Kontakt
+        delete: Lösche diesen Kontakt für immer
+    notes:
+      flash:
+        created: Notiz hinzugefügt
+        updated: Notiz gespeichert
+      index:
+        headline: Hinzugefügt von %{by} am %{on}
+    tags:
+      edit: Tags bearbeiten
+      update: Aktualisieren
+      cancel: Abbrechen
+      notags: Leere Tagliste
+  contacts:
+    show:
+      other: Andere Kontakte
+    contact:
+      show: Kontakt anzeigen
+    role_at_company: %{role} bei %{company}
+  activerecord:
+    attributes:
+      contact:
+        first_name: Vorname
+        first_name_company: Firmenname
+        last_name: Nachname
+        middle_name: Zweiter Vorname
+        company: Firma
+        address: Anschrift
+        phone: Telefon
+        email: Email
+        website: Webseite
+        job_title: Berufsbezeichnung
+        job_title_company: Industrie
+        birthday: Geburtstag
+        background: Hintergrund
+        is_company: Firma?
+        avatar: Avatar
+    models:
+      contact: Kontakt

@@ -1,0 +1,172 @@
+.avatar img {
+  float: left;
+  margin: 5px 8px 5px 0;
+  padding: 4px;
+  border: 1px solid #A3A093;
+  background: #fff;
+}
+
+.no-avatar {
+  float: left;
+  position: relative;
+  left: 0;
+  margin: 5px 8px 5px 0 !important;
+  padding: 4px !important;
+  border: 1px solid #A3A093;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+}
+
+.contact a {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/*
+ * index
+ */
+.container {
+	width: 600px;
+	line-height: 1.4em;
+}
+.container .col-1, .container .col-2, .container .col-3 { float: left; }
+.container .col-1 { width: 78px; }
+.container .col-2 { width: 272px; }
+.container .col-3 { width: 250px; }
+
+.contact h2, .contact h2 a {
+	font-size: 110%;
+  font-weight: normal !important;
+  line-height: normal !important;
+	margin: 0 !important;
+  padding: 2px 0 3px 0;
+}
+
+.contact h2 { color: #41403C; }
+.contact h2 a { color: #22A7F2; }
+
+#contacts .tagarea { margin-top: 3px; }
+
+#contacts .actions a { margin: 0; }
+
+.tag_cloud a { text-decoration: none; border: none !important; }
+.tag_cloud a.level2 { font-size: 110%; }
+.tag_cloud a.level3 { font-size: 130%; }
+.tag_cloud a.level4 { font-size: 150%; }
+
+/*
+ * new and edit
+ */
+form div.is_company label {
+	display: inline !important;
+}
+/*
+ * show
+ */
+dl.contact, dl.contact dt, dl.contact dd { margin:0; padding:0; }
+
+dl.contact {
+  width: 600px;
+  float: left;
+  display: inline; /* IE Fix */
+}
+
+dl.contact dt {
+  float:right;
+  font-size: 130%;
+  color: #41403C;
+  font-weight: bold;
+  width: 520px;
+  line-height: normal !important;
+  padding: 2px 0 3px 0;
+}
+
+dl.contact dd {
+  color: #A3A093;
+  line-height: 1.5em;
+	margin: 0 0 0 80px;
+}
+
+dl.contact dd.avatar {
+  color: #A3A093;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+#content #contact {
+  float: left;
+  width: 67.7%;
+	position: relative;
+}
+
+#content #extended_contact {
+	float: right;
+  padding-left: 15px;
+  padding-top: 0;
+  width: 30.7%;
+}
+
+#content #contact .overview { background-color: #EAEAEA; padding: 10px; }
+#content #contact .overview dl.contact { margin: 0 0 1em 0; }
+#content #contact .overview .form-actions-left { margin: .5em 0 0 0; }
+
+#content #contact hr { clear: both; border-color: #A3A093; }
+
+#content #contact_background { padding: 0 5px; display: none; }
+
+#content #contact .actions {
+  display: block;
+  line-height: 28px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  width: 120px;
+}
+
+#extended_contact td.attribute {
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* Tags (index & show) */
+.tagarea form { display: none; }
+.tagarea ul.tags {
+	float: left; 
+  margin: 0; 
+	padding: 0;
+	line-height: 1.5em !important;
+}
+
+.tagarea ul.tags li { 
+  float: left;
+	display: block;
+	margin: 0 3px 0 0;
+	padding: 2px;
+	line-height: 1.5em !important;
+}
+
+.tagarea ul.tags li.tag { 
+  float: left; 
+  background-color: #fff;
+}
+
+.tagarea a.edit {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url(../../images/refinery/icons/edit.png) no-repeat;
+}
+
+.tagarea a.edit span { display: none; }
+
+.on-hover .tagarea ul.tags li.tag { background-color: #EAEAEA; }
+
+.tagarea .button { height: 20px; }
+
+.tagarea .notags {
+	font-size: smaller;
+	font-style: italic;
+}

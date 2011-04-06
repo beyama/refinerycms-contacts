@@ -1,0 +1,42 @@
+<div class="overview">
+  
+  <dl class="contact">
+    <dt class="name">
+      <%= @contact.name %>
+    </dt>
+    <% unless @contact.avatar.blank? %>
+      <dd class="avatar">
+        <%= image_fu @contact.avatar, '60x60#c', :title => @contact.name %>
+      </dd>
+    <% else %>
+      <dd class="no-avatar">&nbsp;</dd>
+    <% end %>
+		
+		<dd>
+			<%= render :partial => 'tags', :locals => { :contact => @contact } %>
+		</dd>
+  </dl>
+  
+  <hr />
+	
+	<% unless @contact.background.blank? %>
+		<a id="contact_background_button" href="#"><%= t('background', :scope => 'admin.contacts.show') %></a>
+		<div id="contact_background">
+			<%=raw @contact.background %>
+		</div>
+	<% end %>
+  
+  <%= form_for [:admin, @contact, Note.new] do |f| %>
+  
+    <div class='field'>
+      <%= f.label :content, t('add_note', :scope => 'admin.contacts.show') -%>
+      <%= f.text_area :content, :rows => 6, :cols => 40, :class => 'widest' -%>
+    </div>
+		
+		<div class="form-actions-left">
+			<%= f.submit :class => 'wymupdate button' %>
+    </div>
+    
+  <% end %>
+	
+</div>

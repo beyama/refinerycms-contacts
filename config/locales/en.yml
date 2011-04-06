@@ -1,0 +1,65 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    contacts:
+      title: Contacts
+  admin:
+    contacts:
+      index:
+        title: Contacts
+        create_new: Add New Contact
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Contacts yet. Click "Add New Contact" to add your first contact.
+        tags: Tags
+      contact:
+        show: View this contact
+        edit: Edit this contact
+        delete: Remove this contact forever
+      show:
+        name: Name
+        company: Company
+        person: Person
+        contact: Kontakt
+        notes: Notes
+        add_note: Add note to
+        background: Background
+        edit: Edit this contact
+        delete: Remove this contact forever
+    notes:
+      flash:
+        created: Note added
+        updated: Note updated
+      index:
+        headline: Added by %{by} on %{on}
+    tags:
+      edit: Edit tags
+      update: Update
+      cancel: Cancel
+      notags: Taglist empty
+  contacts:
+    show:
+      other: Other Contacts
+    contact:
+      show: Show contact
+    role_at_company: %{role} at %{company}
+  activerecord:
+    attributes:
+      contact:
+        first_name: First Name
+        first_name_company: Company
+        last_name: Last Name
+        middle_name: Middle Name
+        company: Company
+        address: Address
+        phone: Phone
+        email: Email
+        website: Website
+        job_title: Job title
+        job_title_company: Industry
+        birthday: Birthday
+        background: Background
+        is_company: Company?
+        avatar: Avatar

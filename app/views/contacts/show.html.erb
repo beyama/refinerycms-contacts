@@ -1,0 +1,9 @@
+<% content_for :stylesheets, stylesheet_link_tag('refinerycms-contacts') %>
+
+<%= render :partial => 'contact', :locals => {:contact => @contact } %>
+
+<div class="clearfix">&nbsp;</div>
+
+<div class="background">
+	<%=raw @contact.background %>
+</div>

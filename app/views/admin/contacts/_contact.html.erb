@@ -1,0 +1,53 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(contact) -%>">
+  <div class="contact container">
+
+  	<% unless contact.avatar.blank? %>
+      <div class="avatar col-1">
+        <%= image_fu contact.avatar, '60x60#c', :title => contact.name %>
+      </div>
+    <% else %>
+      <div class="avatar col-1">
+      	<div class="no-avatar">&nbsp;</div>
+			</div>
+    <% end %>
+		
+	  <div class="details col-2">
+	  	<h2 class="name"><%= link_to contact.name, admin_contact_url(contact), :title => t('.show') %></h2>
+      
+			<% unless contact.website.blank?%>
+		    <%= contact_link_to contact.website, :class => 'email' %>
+			  <br />
+      <% end %>
+      <% unless contact.email.blank? %>
+        <a href="mailto:<%= contact.email %>"><%= contact.email %></a>
+			  <br />
+      <% end %>
+		  <% unless contact.phone.blank? %>
+		    <%= contact.phone %>
+			  <br />
+	    <% end %>
+			
+			<span class='actions'>
+        <%= link_to refinery_icon_tag("application_go.png"), admin_contact_url(contact), :title => t('.show') %>
+        <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_contact_path(contact),
+          :title => t('.edit') %>
+        <%= link_to refinery_icon_tag("delete.png"), admin_contact_path(contact),
+          :class => "cancel confirm-delete",
+          :title => t('.delete'),
+          :confirm => t('message', :scope => 'shared.admin.delete', :title => contact.first_name),
+          :method => :delete %>                                
+      </span>
+
+			
+	  </div>
+		<div class="extended col-3">
+			<% role = contact_role(contact) %>
+			<% unless role.blank? %>
+			  <h2><%= role %></h2>
+			<% end %>
+			<%= render :partial => 'tags', :locals => { :contact => contact } %>
+		</div>
+		
+  </div>
+	
+</li>

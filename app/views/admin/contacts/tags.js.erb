@@ -1,0 +1,3 @@
+<% id = tagarea_dom_id(@contact) %>
+$('#<%= id %>').replaceWith('<%= escape_javascript(render :partial => 'tags', :locals => {:contact => @contact}) %>');
+contacts_initialize_tagarea( $('#<%= id %>') );

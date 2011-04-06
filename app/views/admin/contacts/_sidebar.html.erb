@@ -1,0 +1,62 @@
+<% scope = 'admin.contacts.show' %>
+
+<h2><%= t(@contact.is_company ? 'company' :  'person', :scope => scope) %></h2>
+
+<table>
+  <tr>
+    <td class="attribute"><%= t('name', :scope => scope) %>:</td>
+    <td><%= @contact.name %></td>
+  </tr>
+	
+	<% scope = 'activerecord.attributes.contact' %>
+  
+  <% unless @contact.job_title.blank? %>
+    <tr>
+      <td class="attribute"><%= @contact.is_company ? t('job_title_company', :scope => scope) : t('job_title', :scope => scope) %>:</td>
+      <td><%= @contact.job_title %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.company.blank? %>
+    <tr>
+      <td class="attribute"><%= t('company', :scope => scope) %>:</td>
+      <td><%= @contact.company %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.address.blank? %>
+    <tr>
+      <td class="attribute"><%= t('address', :scope => scope) %>:</td>
+      <td><%=raw @contact.address.lines.to_a.join('<br />') %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.phone.blank? %>
+    <tr>
+      <td class="attribute"><%= t('phone', :scope => scope) %>:</td>
+      <td><%= @contact.phone %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.email.blank? %>
+    <tr>
+      <td class="attribute"><%= t('email', :scope => scope) %>:</td>
+      <td><%= @contact.email %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.website.blank? %>
+    <tr>
+      <td class="attribute"><%= t('website', :scope => scope) %>:</td>
+      <td><%= contact_link_to @contact.website %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.birthday.blank? %>
+    <tr>
+      <td class="attribute"><%= t('birthday', :scope => scope) %>:</td>
+      <td><%= @contact.birthday %></td>
+    </tr>
+  <% end %>
+  
+</table>
