@@ -35,7 +35,7 @@
           :class => "cancel confirm-delete",
           :title => t('.delete'),
           :confirm => t('message', :scope => 'shared.admin.delete', :title => contact.first_name),
-          :method => :delete %>                                
+          :method => :delete unless contact.system? %>
       </span>
 
 			

@@ -14,27 +14,34 @@ class Contact < ActiveRecord::Base
   
   attr_protected :created_by_id, :updated_by_id
 
-  acts_as_indexed :fields => [:first_name, :middle_name, :last_name, :company, :address, :phone, :email, :website, :job_title, :background]
+  acts_as_indexed :fields => [:first_name, :middle_name, :last_name, :organisation, :address, :phone, :mobile, :email, :website, :job_title]
 
-  validates :first_name, :presence => true
-  validates_uniqueness_of :first_name, :scope => [:last_name, :middle_name, :company]
+  validates :last_name, :presence => true, :unless => :organisation?
+  validates :organisation, :presence => true, :if => :organisation?
   
   belongs_to :avatar, :class_name => 'Image'
-  
   belongs_to :created_by, :class_name => 'User'
   belongs_to :updated_by, :class_name => 'User'
   
-  before_validation :nullify_blank_values
+  default_scope where(:hidden => false)
   
   def name
-    (is_company ? [first_name] : [last_name, first_name, middle_name]).reject(&:blank?).join(" ")
+    is_organisation ? organisation : contact_person
   end
   
-  protected
-  def nullify_blank_values
-    [:middle_name, :last_name, :company].each do |col|
-      write_attribute(col, nil) if read_attribute(col).blank?
-    end
+  def contact_person
+    [last_name, first_name, middle_name].reject(&:blank?).join(" ")
   end
   
+  def organisation?
+    !!is_organisation
+  end
+  
+  def hidden?
+    hidden
+  end
+  
+  def system?
+    system
+  end
 end

@@ -4,43 +4,63 @@
 <dl class="contact">
   <dt class="name">
     <% if contact.background.blank? || !show_link %>
-    <%= contact.name %>
+      <%= contact.name %>
     <% else %>
-    <%= link_to contact.name, contact_url(contact), :title => t('.show') %>
+      <%= link_to contact.name, contact_url(contact), :title => t('.show') %>
     <% end %>
   </dt>
 	
   <% unless contact.avatar.blank? %>
-  <dd class="avatar">
-    <%= image_fu contact.avatar, '60x60#c', :title => contact.name %>
-  </dd>
+    <dd class="avatar">
+      <%= image_fu contact.avatar, '60x60#c', :title => contact.name %>
+    </dd>
   <% else %>
-  <dd class="no-avatar">
-    &nbsp;
-  </dd>
+    <dd class="no-avatar">
+      &nbsp;
+    </dd>
   <% end %>
 	
 	<dd class="details">
-		<% unless contact.address.blank? %>
-		<p class="address">
-			<%=raw contact.address.lines.to_a.join('<br />') %>
-		</p>
+		<% unless contact.address.blank? || contact.zip.blank? || contact.city.blank? %>
+  		<p class="address">
+  			<%=raw contact.address %>
+  			<% unless contact.zip.blank? || contact.city.blank? %>
+  			  <br />
+  			  <% unless contact.zip.blank? %>
+            <span><%= contact.zip %></span> 
+          <% end %>
+          
+          <% unless contact.city.blank? %>
+            <span><%= contact.city %></span>
+          <% end %>
+  			<% end %>
+  		</p>
 		<% end %>
+
     <% unless contact.website.blank? %>
-    <%= contact_link_to contact.website, :class => 'website' %>
-    <br/>
+      <%= contact_link_to contact.website, :class => 'website' %>
+      <br/>
     <% end %>
+    
     <% unless contact.email.blank? %>
-		<span class="email">
-      <%= contact.email %>
-    </span>
-    <br/>
+		  <span class="email">
+        <%= contact.email %>
+      </span>
+      <br/>
     <% end %>
+    
     <% unless contact.phone.blank? %>
-    <span class="phone">
-    	<%= contact.phone %>
-		</span>
-    <br/>
+      <span class="phone">
+      	<%= contact.phone %>
+  		</span>
+      <br/>
+    <% end %>
+    
+    <% unless contact.mobile.blank? %>
+      <span class="mobile">
+        <%= contact.mobile %>
+      </span>
+      <br/>
     <% end %>
   </dd>
 </dl>

@@ -19,9 +19,10 @@ Feature: Contacts
   Scenario: Create Valid Contact
     When I go to the list of contacts
     And I follow "Add New Contact"
-    And I fill in "First Name" with "John"
+    And I fill in "Last Name" with "Doe"
     And I press "Save"
-    Then I should see "'John' was successfully added."
+    Then I should be on the list of contacts
+    And I should see "'Doe' was successfully added."
     And I should have 1 contact
     And the contact created_by field should belongs to me
 
@@ -30,37 +31,27 @@ Feature: Contacts
     When I go to the list of contacts
     And I follow "Add New Contact"
     And I press "Save"
-    Then I should see "First Name can't be blank"
+    Then I should see "Last Name can't be blank"
     And I should have 0 contacts
 
   @contacts-edit @edit
   Scenario: Edit Existing Contact
-    Given I have contacts titled "John"
+    Given I have contacts titled "Doe"
     When I go to the list of contacts
     And I follow "Edit this contact" within ".actions"
-    Then I fill in "First Name" with "Jane"
+    Then I fill in "Last Name" with "Walter"
     And I press "Save"
-    Then I should see "'Jane' was successfully updated."
+    Then I should see "'Walter' was successfully updated."
     And I should be on the list of contacts
-    And I should not see "John"
+    And I should not see "Doe"
     And the contact updated_by field should belongs to me
-
-  @contacts-duplicate @duplicate
-  Scenario: Create Duplicate Contact
-    Given I only have contacts titled John, Zack Boom
-    When I go to the list of contacts
-    And I follow "Add New Contact"
-    And I fill in "First Name" with "Zack Boom"
-    And I press "Save"
-    Then I should see "There were problems"
-    And I should have 2 contacts
 
   @contacts-delete @delete
   Scenario: Delete Contact
-    Given I only have contacts titled John
+    Given I only have contacts titled Doe
     When I go to the list of contacts
     And I follow "Remove this contact forever"
-    Then I should see "'John' was successfully removed."
+    Then I should see "'Doe' was successfully removed."
     And I should have 0 contacts
     
   @contacts-tag @tags
@@ -71,7 +62,7 @@ Feature: Contacts
   @contacts-tag @tags 
   Scenario: The contact new/edit form saves tag_list
     When I am on the new contact form
-    And I fill in "First Name" with "John"
+    And I fill in "Last Name" with "Doe"
     And I fill in "Tags" with "customer, frontend"
     And I press "Save"
 

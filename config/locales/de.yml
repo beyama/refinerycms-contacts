@@ -20,9 +20,10 @@ de:
         delete: Lösche diesen Kontakt für immer
       show:
         name: Name
-        company: Firma
+        organisation: Organisation
         person: Person
         contact: Kontakt
+        contact_person: Kontact
         notes: Notizen
         add_note: Notiz hinzufügen
         background: Hintergrund
@@ -42,26 +43,32 @@ de:
   contacts:
     show:
       other: Andere Kontakte
+    index:
+      no_contacts_yet: Es sind keine Kontakte vorhanden.
     contact:
       show: Kontakt anzeigen
-    role_at_company: %{role} bei %{company}
+    role_at_organisation: %{role} bei %{organisation}
   activerecord:
     attributes:
       contact:
         first_name: Vorname
-        first_name_company: Firmenname
         last_name: Nachname
         middle_name: Zweiter Vorname
-        company: Firma
+        organisation: Organisation
+        organisation_on_organisation: Firmenname
         address: Anschrift
+        zip: Postleitzahl
+        city: Stadt
+        country: Land
         phone: Telefon
+        mobile: Mobile
         email: Email
         website: Webseite
         job_title: Berufsbezeichnung
-        job_title_company: Industrie
+        job_title_on_organisation: Industrie
         birthday: Geburtstag
         background: Hintergrund
-        is_company: Firma?
+        is_organisation: Organisation?
         avatar: Avatar
     models:
       contact: Kontakt

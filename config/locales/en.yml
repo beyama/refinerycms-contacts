@@ -20,9 +20,10 @@ en:
         delete: Remove this contact forever
       show:
         name: Name
-        company: Company
+        organisation: Organisation
         person: Person
         contact: Kontakt
+        contact_person: Contact
         notes: Notes
         add_note: Add note to
         background: Background
@@ -42,24 +43,30 @@ en:
   contacts:
     show:
       other: Other Contacts
+    index:
+      no_contacts_yet: There are no Contacts yet.
     contact:
       show: Show contact
-    role_at_company: %{role} at %{company}
+    role_at_organisation: %{role} at %{organisation}
   activerecord:
     attributes:
       contact:
         first_name: First Name
-        first_name_company: Company
         last_name: Last Name
         middle_name: Middle Name
-        company: Company
+        organisation: Company
+        organisation_on_organisation: Company name
         address: Address
+        zip: Zip
+        city: City
+        country: Country
         phone: Phone
+        mobile: Mobile
         email: Email
         website: Website
         job_title: Job title
-        job_title_company: Industry
+        job_title_on_organisation: Industry
         birthday: Birthday
         background: Background
-        is_company: Company?
+        is_organisation: Organisation?
         avatar: Avatar

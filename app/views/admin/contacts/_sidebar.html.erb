@@ -1,60 +1,99 @@
-<% scope = 'admin.contacts.show' %>
+<% 
+  scope = 'admin.contacts.show' 
+  ar_scope = 'activerecord.attributes.contact'  
+%>
 
-<h2><%= t(@contact.is_company ? 'company' :  'person', :scope => scope) %></h2>
+<h2><%= t(@contact.is_organisation ? 'organisation' :  'person', :scope => scope) %></h2>
 
 <table>
   <tr>
     <td class="attribute"><%= t('name', :scope => scope) %>:</td>
     <td><%= @contact.name %></td>
   </tr>
-	
-	<% scope = 'activerecord.attributes.contact' %>
   
   <% unless @contact.job_title.blank? %>
     <tr>
-      <td class="attribute"><%= @contact.is_company ? t('job_title_company', :scope => scope) : t('job_title', :scope => scope) %>:</td>
+      <td class="attribute"><%= @contact.is_organisation ? t('job_title_on_organisation', :scope => ar_scope) : t('job_title', :scope => ar_scope) %>:</td>
       <td><%= @contact.job_title %></td>
     </tr>
   <% end %>
   
-  <% unless @contact.company.blank? %>
+  <% if @contact.is_organisation %>
+    <% contact_person = @contact.contact_person %>
+    <% unless contact_person.blank? %>
+      <tr>
+        <td class="attribute"><%= t('contact_person', :scope => scope) %>:</td>
+        <td><%= contact_person %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  
+  <% if !@contact.is_organisation && !@contact.organisation.blank? %>
     <tr>
-      <td class="attribute"><%= t('company', :scope => scope) %>:</td>
-      <td><%= @contact.company %></td>
+      <td class="attribute"><%= t('organisation', :scope => ar_scope) %>:</td>
+      <td><%= @contact.organisation %></td>
     </tr>
   <% end %>
   
   <% unless @contact.address.blank? %>
     <tr>
-      <td class="attribute"><%= t('address', :scope => scope) %>:</td>
+      <td class="attribute"><%= t('address', :scope => ar_scope) %>:</td>
       <td><%=raw @contact.address.lines.to_a.join('<br />') %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.zip.blank? %>
+    <tr>
+      <td class="attribute"><%= t('zip', :scope => ar_scope) %>:</td>
+      <td><%=raw @contact.zip %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.city.blank? %>
+    <tr>
+      <td class="attribute"><%= t('city', :scope => ar_scope) %>:</td>
+      <td><%=raw @contact.city %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.country.blank? %>
+    <tr>
+      <td class="attribute"><%= t('country', :scope => ar_scope) %>:</td>
+      <td><%=raw @contact.country %></td>
     </tr>
   <% end %>
   
   <% unless @contact.phone.blank? %>
     <tr>
-      <td class="attribute"><%= t('phone', :scope => scope) %>:</td>
+      <td class="attribute"><%= t('phone', :scope => ar_scope) %>:</td>
       <td><%= @contact.phone %></td>
+    </tr>
+  <% end %>
+  
+  <% unless @contact.mobile.blank? %>
+    <tr>
+      <td class="attribute"><%= t('mobile', :scope => ar_scope) %>:</td>
+      <td><%= @contact.mobile %></td>
     </tr>
   <% end %>
   
   <% unless @contact.email.blank? %>
     <tr>
-      <td class="attribute"><%= t('email', :scope => scope) %>:</td>
+      <td class="attribute"><%= t('email', :scope => ar_scope) %>:</td>
       <td><%= @contact.email %></td>
     </tr>
   <% end %>
   
   <% unless @contact.website.blank? %>
     <tr>
-      <td class="attribute"><%= t('website', :scope => scope) %>:</td>
+      <td class="attribute"><%= t('website', :scope => ar_scope) %>:</td>
       <td><%= contact_link_to @contact.website %></td>
     </tr>
   <% end %>
   
   <% unless @contact.birthday.blank? %>
     <tr>
-      <td class="attribute"><%= t('birthday', :scope => scope) %>:</td>
+      <td class="attribute"><%= t('birthday', :scope => ar_scope) %>:</td>
       <td><%= @contact.birthday %></td>
     </tr>
   <% end %>

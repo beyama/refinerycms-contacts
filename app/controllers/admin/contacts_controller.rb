@@ -48,6 +48,16 @@ module Admin
       end
     end
     
+    def destroy
+      render :nothing => true, :status => :forbidden and return if @contact.system
+      
+      if @contact.destroy
+        flash.notice = t('destroyed', :scope => 'refinery.crudify', :what => "'#{@contact.name}'")
+      end
+
+      redirect_to :action => :index
+    end
+    
     protected
     def search_all_contacts_by_tag
       find_all_contacts if @contacts.nil?

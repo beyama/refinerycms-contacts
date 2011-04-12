@@ -28,7 +28,7 @@ content_for :javascripts, javascript_include_tag('refinery/refinerycms-contacts'
           :class => "cancel confirm-delete",
           :title => t('.delete'),
           :confirm => t('message', :scope => 'shared.admin.delete', :title => @contact.first_name),
-          :method => :delete %>       
+          :method => :delete unless @contact.system? %>       
   </span>
 	
 </div>
@@ -36,13 +36,3 @@ content_for :javascripts, javascript_include_tag('refinery/refinerycms-contacts'
 <div id="extended_contact">
   <%= render :partial => 'sidebar' %>
 </div>
-
-<% content_for :javascripts do %>
-  <script>
-    var container = $('#contact_background');
-    $('#contact_background_button').click(function(){
-		  container.toggle();
-			return false;
-	  });
-  </script>
-<% end %>

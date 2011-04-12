@@ -1,4 +1,6 @@
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag 'refinery/refinerycms-contacts' %>
 <% end %>
+<% content_for :javascripts, javascript_include_tag('refinery/refinerycms-contacts') %>
+
 <%= render :partial => "form" %>

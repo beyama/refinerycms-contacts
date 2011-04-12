@@ -5,12 +5,12 @@ end
 Given /^I (only )?have contacts titled "?([^\"]*)"?$/ do |only, titles|
   Contact.delete_all if only
   titles.split(', ').each do |title|
-    Contact.create(:first_name => title)
+    Contact.create(:last_name => title)
   end
 end
 
 Given /^there is a contact titled "([^"]*)" and tagged "([^"]*)"$/ do |name, tag|
-  Contact.create(:first_name => name, :tag_list => tag)
+  Contact.create(:last_name => name, :tag_list => tag)
 end
 
 Then /^the contact should have the tags "([^"]*)"$/ do |tag_list|

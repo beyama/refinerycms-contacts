@@ -2,15 +2,15 @@ module Admin::ContactsHelper
   
   include ActsAsTaggableOn::TagsHelper if Contact.taggable?
   
-  def company_context_label(form, sym)
+  def organisation_context_label(form, sym)
     scope   = 'activerecord.attributes.contact'
     natural = t(sym, :scope => scope)
-    company = t("#{sym}_company", :scope => scope)
-    form.label(sym, @contact.is_company ? company : natural, :company_title => company, :natural_title => natural, :class => "company_context")
+    organisation = t("#{sym}_on_organisation", :scope => scope)
+    form.label(sym, @contact.is_organisation ? organisation : natural, :organisation_title => organisation, :natural_title => natural, :class => "organisation_context")
   end
   
   def contact_headline(contact)
-    t((contact.is_company ? '.company' : '.contact')) + " ##{contact.id}"
+    t((contact.is_organisation ? '.organisation' : '.contact')) + " ##{contact.id}"
   end
   
   def tagarea_dom_id(contact)
@@ -18,15 +18,15 @@ module Admin::ContactsHelper
   end
   
   def contact_role(c)
-    if c.is_company
+    if c.is_organisation
       c.job_title
     else
-      if !c.job_title.blank? && !c.company.blank?
-        t('contacts.role_at_company', :role => c.job_title, :company => c.company)
+      if !c.job_title.blank? && !c.organisation.blank?
+        t('contacts.role_at_organisation', :role => c.job_title, :organisation => c.organisation)
       elsif !c.job_title.blank?
         c.job_title
-      elsif !c.company.blank?
-        c.company
+      elsif !c.organisation.blank?
+        c.organisation
       end
     end
   end
