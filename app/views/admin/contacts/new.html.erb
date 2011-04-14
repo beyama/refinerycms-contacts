@@ -3,4 +3,4 @@
 <% end %>
 <% content_for :javascripts, javascript_include_tag('refinery/refinerycms-contacts') %>
 
-<%= render :partial => "form" %>
+<%= render :partial => "form", :locals => {:form_url => admin_contacts_path(@contact)} %>

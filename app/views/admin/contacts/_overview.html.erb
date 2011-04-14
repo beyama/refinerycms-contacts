@@ -26,7 +26,7 @@
 		</div>
 	<% end %>
   
-  <%= form_for [:admin, @contact, Note.new] do |f| %>
+  <%= form_for @note, :url => admin_contact_notes_path(@contact, @note) do |f| %>
   
     <div class='field'>
       <%= f.label :content, t('add_note', :scope => 'admin.contacts.show') -%>

@@ -1,4 +1,4 @@
-class Admin::NotesController < ApplicationController
+class Admin::NotesController < Admin::BaseController
 
   rescue_from ActiveRecord::RecordNotFound, :with => :error_404
 
@@ -31,7 +31,8 @@ class Admin::NotesController < ApplicationController
   protected
   
   def redirect_to_source
-    redirect_to polymorphic_path([:admin, @source])
+    # FIXME: polymorphic_path([:admin, @source])
+    redirect_to admin_contact_path(@source)
   end
   
   def find_note
