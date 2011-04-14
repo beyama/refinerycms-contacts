@@ -12,7 +12,7 @@ class Contact < ActiveRecord::Base
     end
   end
   
-  attr_protected :created_by_id, :updated_by_id
+  attr_protected :created_by_id, :updated_by_id, :hidden, :system
 
   acts_as_indexed :fields => [:first_name, :middle_name, :last_name, :organisation, :address, :phone, :mobile, :email, :website, :job_title]
 
@@ -23,7 +23,7 @@ class Contact < ActiveRecord::Base
   belongs_to :created_by, :class_name => 'User'
   belongs_to :updated_by, :class_name => 'User'
   
-  default_scope where(:hidden => false)
+  scope :visible, where(:hidden => false)
   
   def name
     is_organisation ? organisation : contact_person

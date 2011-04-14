@@ -10,6 +10,7 @@ module Refinery
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
           plugin.name = "contacts"
+          plugin.menu_match = /^\/?(admin|refinery)\/?(contacts|notes)?/
           plugin.activity = {
             :class => Contact,
             :title => 'name'

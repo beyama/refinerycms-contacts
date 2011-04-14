@@ -11,6 +11,10 @@ module Admin
     def index
       search_all_contacts if searching?
       search_all_contacts_by_tag unless params[:tag].blank?
+      
+      find_all_contacts if @contacts.nil?
+      @contacts = @contacts.visible
+      
       paginate_all_contacts 
 
       @tags = Contact.tag_counts_on(:tags) if Contact.taggable?
