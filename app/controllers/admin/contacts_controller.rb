@@ -42,7 +42,7 @@ module Admin
       @contact.updated_by = current_user
       if @contact.save
         respond_to do |format|
-          format.js { render :tags }
+          format.js { render 'tags' }
           format.html do
             flash.notice = t('refinery.crudify.updated', :what => "'#{@contact.name}'")
             redirect_to :action => :index

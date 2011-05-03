@@ -7,7 +7,7 @@ module NavigationHelpers
           contacts_path
         when /the contact frontend details of "?([^\"]*)"?/
           contact = Contact.find_by_last_name($1)
-          contact_path(contact)
+          contacts_path(contact)
         when /the contact detail of "?([^\"]*)"?/
           contact = Contact.find_by_last_name($1)
           admin_contact_path(contact)

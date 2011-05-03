@@ -6,7 +6,7 @@ Feature: Show contacts on frontend
   
   Background:
     Given only the following contacts
-      | first_name | tag_list |
+      | last_name | tag_list |
       | Zack Boom  | Berlin   |
       | Alexander  | Erfurt   |
       | Stefan     | Halle    |
