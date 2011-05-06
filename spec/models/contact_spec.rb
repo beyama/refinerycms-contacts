@@ -4,11 +4,14 @@ describe Contact do
 
   def reset_contact(options = {})
     @valid_attributes = {
-      :last_name => "RSpec is great for testing too"
+      :last_name => "Doe"
     }
 
     @contact.destroy if @contact
-    @contact = Contact.create!(@valid_attributes.update(options))
+    @contact = Contact.new(@valid_attributes.update(options))
+    @contact.hidden = !!options[:hidden]
+    @contact.system = !!options[:system]
+    @contact.save!
   end
 
   before(:each) do
@@ -60,9 +63,9 @@ describe Contact do
   
   context "scopes" do
     
-    it "default scope should not return hidden contacts" do
+    it "visible scope should not return hidden contacts" do
       reset_contact(:hidden => true)
-      Contact.count.should == 0
+      Contact.visible.count.should == 0
     end
     
   end
