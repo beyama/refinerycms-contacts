@@ -14,7 +14,7 @@
 		</li>
 	</ul>
 	
-	<%= form_for contact, :url => admin_contact_path(contact), :class => 'tagform', :remote => true do |f| %>
+	<%= form_for contact, :as => :contact, :url => admin_contact_path(contact), :class => 'tagform', :remote => true do |f| %>
 	  <%= hidden_field_tag :_tag_update, true %>
 	  <%= f.text_field :tag_list -%>
 	  <%= f.submit :class => 'button', :value => t('admin.tags.update') %>
