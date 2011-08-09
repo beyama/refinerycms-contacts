@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name              = 'refinerycms-contacts'
   s.version           = '0.1.0'
   s.description       = 'Ruby on Rails Contacts engine for Refinery CMS'
-  s.date              = '2011-03-11'
+  s.date              = '2011-7-28'
   s.summary           = 'Contacts engine for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir['lib/**/*', 'config/**/*', 'app/**/*', 'db/**/*', 'public/**/*']

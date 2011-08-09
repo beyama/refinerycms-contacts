@@ -1,0 +1,62 @@
+h1. Refinery CMS Contacts
+
+A simple address engine for "Refinery CMS":http://refinerycms.com/ .
+
+h2. Introduction
+
+This engine is shipped with a simple contact model to represent a natural person or an organisation, a backend to view and manage contacts and a frontend to list and show contacts to your visitors.
+
+With TaggableOn integrated in Refinery CMS (shipped with the blog engine for example), Contacts offers the ability to tag contacts and filter contacts by tag.
+
+By integrating TaggableOn, the Contacts engine lists only contacts tagged with 'frontend' in the frontend.
+The frontend tag filter list can be configured by changing the content of the 'Contact.FRONTEND_TAGS' array (by an initializer for example).
+
+Contacts was created with two things in mind: 
+
+* A simple and reusable contact/address model, that can be used from other engines. 
+* And the possibility to show a list of contact person or organisations with an
+  optionally content page per contact to your visitors.
+
+The 'Contact' model supports STI. There are two boolean properties to change it's visibility and behavior:
+
+* system: This contact is managed by another engine and should not be deletable by the Contacts backend.
+* hidden: This contact is managed by another engine and should not be visible from Contacts views.
+
+h2. Requirements
+
+Refinery CMS version 1.0.0 or above.
+
+h2. Installation
+
+To install, add refinerycms_contacts to your @Gemfile@ and run `bundle install`:
+
+<pre>
+gem 'refinerycms_contacts'
+</pre>
+
+After Contacts is installed, you will need to generate the migration files and migrate your database:
+
+<pre>
+rails g refinerycms_contacts
+rake db:migrate
+</pre>
+
+h2. How to contribute
+
+If you find what looks like a bug:
+
+# Check the "GitHub issue tracker":http://github.com/beyama/refinerycms_contacts/issues/ to see if anyone else has reported issue.
+# If you don't see anything, create an issue with information on how to reproduce it.
+
+If you want to contribute an enhancement or a fix:
+
+# Fork the project on github.
+# Make your changes with tests.
+# Commit the changes without making changes to any files that aren't related to your enhancement or fix.
+# Send a pull request.
+
+h2. License
+
+Designed and created by Alexander Jentz, Germany. Represented by "zack boom GmbH":http://www.zackboom.ch/, Switzerland.
+
+MIT License. See the included MIT-LICENSE file.
