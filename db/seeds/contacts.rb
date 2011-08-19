@@ -10,7 +10,7 @@ page = Page.create(
   :link_url => "/contacts",
   :deletable => false,
   :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
-  :menu_match => "^/contacts?(\/|\/.+?|)$"
+  :menu_match => "^/(contacts|contacts/.*)"
 )
 
 Page.default_parts.each do |default_page_part|
