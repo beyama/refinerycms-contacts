@@ -33,7 +33,7 @@ protected
   end
 
   def find_all_contacts
-    @contacts = filtered_contacts.order("last_name ASC").order("first_name ASC")
+    @contacts = filtered_contacts.order("organisation ASC").order("last_name ASC").order("first_name ASC")
     @contacts = paginate if paginate?
   end
   
