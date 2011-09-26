@@ -1,7 +1,7 @@
 <% content_for :stylesheets, stylesheet_link_tag('refinerycms-contacts') %>
 
 <% content_for :body_content_left do %>
-  <%=raw @page[Page.default_parts.first.to_sym] if Page.default_parts.any? %>
+  <%=raw @page.content_for(Page.default_parts.first.to_sym) if Page.default_parts.any? %>
 
   <% if @contacts.any? %>
     <section id="contacts">
@@ -14,7 +14,7 @@
 <% end %>
 
 <% content_for :body_content_right do %>
-  <%=raw @page[Page.default_parts.second.to_sym] if Page.default_parts.many? %>
+  <%=raw @page.content_for(Page.default_parts.second.to_sym) if Page.default_parts.many? %>
 <% end %>
 
 <%= render :partial => "/shared/content_page" %>
