@@ -1,5 +1,7 @@
 h1. Refinery CMS Contacts
 
+*This repository is not maintained anymore.*
+
 A simple address engine for "Refinery CMS":http://refinerycms.com/ .
 
 h2. Introduction
@@ -24,14 +26,14 @@ The 'Contact' model supports STI. There are two boolean properties to change it'
 
 h2. Requirements
 
-Refinery CMS version 1.0.0 or above.
+Refinery CMS version 1.0.9 or above.
 
 h2. Installation
 
-To install, add refinerycms_contacts to your @Gemfile@ and run `bundle install`:
+To install, add refinerycms-contacts to your @Gemfile@ and run `bundle install`:
 
 <pre>
-gem 'refinerycms_contacts'
+gem 'refinerycms-contacts'
 </pre>
 
 After Contacts is installed, you will need to generate the migration files and migrate your database:
@@ -45,7 +47,7 @@ h2. How to contribute
 
 If you find what looks like a bug:
 
-# Check the "GitHub issue tracker":http://github.com/beyama/refinerycms_contacts/issues/ to see if anyone else has reported issue.
+# Check the "GitHub issue tracker":http://github.com/beyama/refinerycms-contacts/issues/ to see if anyone else has reported issue.
 # If you don't see anything, create an issue with information on how to reproduce it.
 
 If you want to contribute an enhancement or a fix:
@@ -57,6 +59,6 @@ If you want to contribute an enhancement or a fix:
 
 h2. License
 
-Designed and created by Alexander Jentz, Germany. Represented by "zack boom GmbH":http://www.zackboom.ch/, Switzerland.
+Designed and created by "Alexander Jentz":http://beyama.de, Germany. 
 
 MIT License. See the included MIT-LICENSE file.
